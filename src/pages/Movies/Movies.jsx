@@ -24,7 +24,7 @@ const Movies = () => {
       .then(res => res.json())
       .then(json => setMovies(json.results))
       .catch(err => console.error('error:' + err));
-  }, [movies]);
+  }, [movies, url, options]);
 
   function searchMovie(e) {
     e.preventDefault();

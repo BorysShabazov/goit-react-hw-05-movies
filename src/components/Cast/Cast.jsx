@@ -21,7 +21,7 @@ const Cast = () => {
       .then(res => res.json())
       .then(json => setState(json.cast))
       .catch(err => console.error('error:' + err));
-  }, []);
+  }, [url, options]);
 
   return (
     <ul className={stls.list}>
