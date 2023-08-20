@@ -22,7 +22,7 @@ const Reviews = () => {
       .then(res => res.json())
       .then(json => setState(json.results))
       .catch(err => console.error('error:' + err));
-  }, [url, options]);
+  }, [url, options, fetch]);
 
   return state.length ? (
     state.map(el => (
