@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  background-color: #d3d3d3;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  gap: 20px;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.img {
+  background-color: #fff;
+}
+
+.placeholderImg {
+  width: 100px;
+  height: 150px;
+  background-image: url('https://sneg.top/uploads/posts/2023-06/1687806580_sneg-top-p-avatarka-zaglushka-pinterest-9.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

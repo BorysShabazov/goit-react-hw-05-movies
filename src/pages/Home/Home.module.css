@@ -1,0 +1,51 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 25px;
+  column-gap: 25px;
+  padding: 25px;
+  justify-content: center;
+}
+
+.item {
+  width: 200px;
+  background-color: gray;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.item:hover {
+  box-shadow: 0px 8px 12px rgba(75, 0, 130, 0.3);
+}
+
+.itemThomb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.img {
+  border-radius: 8px 8px 0 0;
+  height: 100%;
+}
+
+.title {
+  padding: 10px;
+  margin: auto;
+}
+
+a {
+  display: block;
+  height: 100%;
+}
+
+.placeholderImg {
+  width: 200px;
+  height: 30npm 0px;
+  background-image: url('https://img1.akspic.ru/crops/3/8/0/5083/5083-more-voda-nebo-film-morda-720x1280.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

@@ -54,3 +54,12 @@ input,
 textarea {
   outline: none;
 }
+
+.active {
+  color: white;
+}
+
+#root {
+  height: 100vh;
+  background-color: #d3d3d3;
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import stls from './Home.module.css';
 
 const fetch = require('node-fetch');
 const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
@@ -25,17 +26,23 @@ const Home = () => {
 
   return (
     <div>
-      <ul>
+      <ul className={stls.list}>
         {state.length
           ? state.map(el => {
               return (
-                <li key={el.id}>
+                <li className={stls.item} key={el.id}>
                   <NavLink to={`movies/${el.id}`} state={{ from: location }}>
-                    <img
-                      src={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}
-                      alt="poster"
-                    />
-                    {el.title}
+                    <div className={stls.itemThomb}>
+                      <div className={stls.placeholderImg}>
+                        <img
+                          className={stls.img}
+                          src={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}
+                          alt="poster"
+                        />
+                      </div>
+
+                      <p className={stls.title}>{el.title}</p>
+                    </div>
                   </NavLink>
                 </li>
               );

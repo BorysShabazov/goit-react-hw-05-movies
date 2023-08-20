@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import stls from './Movies.module.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -39,24 +40,29 @@ const Movies = () => {
   );
 
   return (
-    <>
-      <form action="submit" onSubmit={searchMovie}>
+    <div className={stls.movie}>
+      <form action="submit" onSubmit={searchMovie} className={stls.form}>
         <label>
-          <input name="searchValue" type="text" />
+          <input name="searchValue" type="text" className={stls.input} />
         </label>
-        <button>search</button>
+        <button className={stls.search}>Search</button>
       </form>
       {movies.length ? (
-        <ul>
+        <ul className={stls.list}>
           {visibleMovies.map(el => (
-            <li key={el.id}>
-              {' '}
+            <li className={stls.item} key={el.id}>
               <NavLink to={`${el.id}`} state={{ from: location }}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}
-                  alt="poster"
-                />
-                {el.title}
+                <div className={stls.itemThomb}>
+                  <div className={stls.placeholderImg}>
+                    <img
+                      className={stls.img}
+                      src={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}
+                      alt="poster"
+                    />
+                  </div>
+
+                  <p className={stls.title}> {el.title}</p>
+                </div>
               </NavLink>
             </li>
           ))}
@@ -64,7 +70,7 @@ const Movies = () => {
       ) : (
         ''
       )}
-    </>
+    </div>
   );
 };
 

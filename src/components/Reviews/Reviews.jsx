@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import stls from './Reviews.module.css';
 
 const Reviews = () => {
   const [state, setState] = useState([]);
@@ -25,7 +26,7 @@ const Reviews = () => {
 
   return state.length ? (
     state.map(el => (
-      <div key={el.id}>
+      <div className={stls.reviews} key={el.id}>
         <h3>Author: {el.author_details.username}</h3>
         <p>{el.content}</p>
       </div>

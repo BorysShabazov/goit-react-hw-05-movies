@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import stls from './Cast.module.css';
 
 const Cast = () => {
   const [state, setState] = useState([]);
@@ -23,13 +24,17 @@ const Cast = () => {
   }, []);
 
   return (
-    <ul>
+    <ul className={stls.list}>
       {state.map(el => (
-        <li key={el.id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w200/${el.profile_path}`}
-            alt=""
-          />
+        <li className={stls.item} key={el.id}>
+          <div className={stls.placeholderImg}>
+            <img
+              className={stls.img}
+              src={`https://image.tmdb.org/t/p/w200/${el.profile_path}`}
+              alt={el.name}
+            />
+          </div>
+
           <p>{el.name}</p>
           <p>Character: {el.character}</p>
         </li>
