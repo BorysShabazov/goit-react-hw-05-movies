@@ -8,8 +8,6 @@ const Movies = () => {
   const movieQ = serchParams.get('q') || '';
   const location = useLocation();
 
-  console.log(movieQ);
-
   const fetch = require('node-fetch');
   const url = `https://api.themoviedb.org/3/search/movie?query=${movieQ}&include_adult=false&language=en-US&page=1`;
 
@@ -27,7 +25,7 @@ const Movies = () => {
       .then(res => res.json())
       .then(json => setMovies(json.results))
       .catch(err => console.error('error:' + err));
-  }, [movieQ, url, fetch]);
+  }, [movies, url, fetch]);
 
   function searchMovie(e) {
     e.preventDefault();
