@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import stls from './Movies.module.css';
 
@@ -11,6 +11,14 @@ const Movies = () => {
   const fetch = require('node-fetch');
   const url = `https://api.themoviedb.org/3/search/movie?query=${movieQ}&include_adult=false&language=en-US&page=1`;
 
+  const memoizedFetch = useMemo(() => {
+    return async (url, options) => {
+      const response = await fetch(url, options);
+      const json = await response.json();
+      return json;
+    };
+  }, [fetch]);
+
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -21,11 +29,10 @@ const Movies = () => {
       },
     };
 
-    fetch(url, options)
-      .then(res => res.json())
+    memoizedFetch(url, options)
       .then(json => setMovies(json.results))
       .catch(err => console.error('error:' + err));
-  }, [movies, url, fetch]);
+  }, [url, memoizedFetch]);
 
   function searchMovie(e) {
     e.preventDefault();
