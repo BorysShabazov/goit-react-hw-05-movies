@@ -5,11 +5,13 @@ import stls from './Movies.module.css';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [serchParams, setSearchParams] = useSearchParams();
-  const movieId = serchParams.get('id') || '';
+  const movieQ = serchParams.get('q') || '';
   const location = useLocation();
 
+  console.log(movieQ);
+
   const fetch = require('node-fetch');
-  const url = `https://api.themoviedb.org/3/search/movie?query=${movieId}&include_adult=false&language=en-US&page=1`;
+  const url = `https://api.themoviedb.org/3/search/movie?query=${movieQ}&include_adult=false&language=en-US&page=1`;
 
   useEffect(() => {
     const options = {
@@ -32,12 +34,12 @@ const Movies = () => {
     if (!e.currentTarget.searchValue.value) {
       return setSearchParams({});
     }
-    setSearchParams({ id: e.currentTarget.searchValue.value });
+    setSearchParams({ q: e.currentTarget.searchValue.value });
     e.currentTarget.searchValue.value = '';
   }
 
   const visibleMovies = movies.filter(movie =>
-    movie.title.toLowerCase().includes(movieId)
+    movie.title.toLowerCase().includes(movieQ.toLowerCase())
   );
 
   return (
